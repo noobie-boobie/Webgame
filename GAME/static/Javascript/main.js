@@ -52,13 +52,12 @@ var render = Render.create({
                 }
              });
               
-var boxA = Bodies.rectangle(70, 520, 80, 80);
 
-var ground = Bodies.rectangle(0, 600, 2000, 80, { isStatic: true }, {render: {
-    fillStyle: 'green'
-}});
- 
-World.add(engine.world, [boxA,ground]);
- 
+var box = new Box(100,100,100,100,'red');
+box.show();
+var ground = new Box(0, 600, 2000, 80, 'green', true);
+ground.show();
+
+
 Engine.run(engine);
 Render.run(render);
