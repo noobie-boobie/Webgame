@@ -1,0 +1,10 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Baloo Bhaina 2';
+}
+
+
+#menulist li{
+    xdisplay: inline-block;
+}
