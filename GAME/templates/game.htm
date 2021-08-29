@@ -13,16 +13,21 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
     
 </head>
-<body>
+<body bgcolor="black">
 
     <script>
-        let imgURL = "{% static '/images/ball.png' %}";
-        let groundURL = "{% static '/images/ground.png' %}"
-        let backgroundURL = "{% static '/images/bg.png' %}"
-        let towerURL = "{% static '/images/castletower.png' %}"
+        let ballImage = "{% static '/images/ball.png' %}";
+        let groundImage = "{% static '/images/ground.png' %}"
+        let backgroundImage = "{% static '/images/background.jpg' %}"
+        let walkImage = "{% static '/images/giphy.gif' %}"
+        let towerImage = "{% static '/images/castletower.png' %}"
 
     </script>
-
+ <script src = "{% static 'Javascript/AllAttributes.js' %}"></script>
+    <script src="{% static 'Javascript/MatterSetup.js' %}"></script>
+    <script src = "{% static 'Javascript/Stone.js' %}"></script>
+    <script src = "{% static 'Javascript/Ground.js' %}"></script>
+    <script src = "{% static 'Javascript/Tower.js' %}"></script>
     <script src = "{% static 'Javascript/Box.js' %}"></script>
      <script src = "{% static 'Javascript/Weapon.js' %}"></script>
     <script src = "{% static 'Javascript/main.js' %}"></script>

@@ -8,7 +8,7 @@ class Box{
         this.height = h;
         this.color = color;
         this.img = img;
-        this.body.restitution = res;
+
         this.body.isStatic = _static;
     }
 
@@ -16,6 +16,6 @@ class Box{
         var pos = this.body.position;
         fill(255,0,0);
         rect(pos.x, pos.y, this.width, this.height);
-        image(this.img, pos.x,pos.y,this.width,this.height);
+        //image(this.img, pos.x,pos.y,this.width,this.height);
     }
 }

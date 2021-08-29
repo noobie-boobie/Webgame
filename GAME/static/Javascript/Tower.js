@@ -1,6 +1,6 @@
-class Enemy{
-    constructor(x) {
-        this.x = x;
+class Tower{
+    constructor() {
+        this.x = 100;
         this.y = 600-150;
         this.w = 100;
         this.h = 190;
@@ -9,23 +9,27 @@ class Enemy{
     }
 
     setProperties(){
-        this.body.isStatic = false;
-        // let sprite = this.body.render.sprite
-        // //sprite.texture = towerImage;
-        // sprite.xScale = 1;
-        // sprite.yScale = 1
+        this.body.isStatic = true;
+        let sprite = this.body.render.sprite
+        sprite.texture = towerImage;
+        sprite.xScale = 1;
+        sprite.yScale = 1
+        this.body.friction = 0.03;
+
 
 
     }
 
     move(){
+
+
         Body.applyForce(this.body,
             {
-            x: 0,
-            y: windowHeight-100
+            x: this.body.position.x+5000,
+            y: this.body.position.y
             },
             {
-                x:0.8,
+                x:0.3,
                 y:0
             }
 
