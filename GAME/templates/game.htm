@@ -8,28 +8,23 @@
     
     <title>Game</title>
 
-    <style>
-        #canvas{
-            width: 80%;
-            height: 100vh;
-            background: ligthcyan;
-            border: 1px solid black;
-        }
-
-        #tower{
-            width: 150px;
-            height: 150px;
-            background:red;
-            border: 1px solid black;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
     
 </head>
 <body>
-    
-      <script src = "{% static 'Javascript/Box.js' %}"></script>
+
+    <script>
+        let imgURL = "{% static '/images/ball.png' %}";
+        let groundURL = "{% static '/images/ground.png' %}"
+        let backgroundURL = "{% static '/images/bg.png' %}"
+        let towerURL = "{% static '/images/castletower.png' %}"
+
+    </script>
+
+    <script src = "{% static 'Javascript/Box.js' %}"></script>
+     <script src = "{% static 'Javascript/Weapon.js' %}"></script>
     <script src = "{% static 'Javascript/main.js' %}"></script>
     
 </body>

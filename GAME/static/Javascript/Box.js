@@ -1,23 +1,21 @@
 class Box{
-    constructor(x, y, w, h, color, _static){
-        this.posX = x;
-        this.posY = y;
+    constructor(x, y, w, h, color, _static, img, res){
+        this.body = Matter.Bodies.rectangle(x, y, w, h);
+        World.add(world, this.body);
+        this.x = x;
+      this.y = y;
         this.width = w;
         this.height = h;
         this.color = color;
-        this.static = _static;
-    }
-
-    print(){
-        console.log("Debug print");
+        this.img = img;
+        this.body.restitution = res;
+        this.body.isStatic = _static;
     }
 
     show(){
-
-        
-        let box = Bodies.rectangle(this.posX, this.posY, this.width, this.height,{isStatic:this.static}, {render: {
-            fillStyle: 'green'
-        }});
-        World.add(engine.world, [box]);
+        var pos = this.body.position;
+        fill(255,0,0);
+        rect(pos.x, pos.y, this.width, this.height);
+        image(this.img, pos.x,pos.y,this.width,this.height);
     }
 }
