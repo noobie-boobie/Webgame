@@ -15,7 +15,7 @@ class Ground{
         sprite.xScale = 4;
         sprite.yScale = 2.2;
         this.body.friction = 3;
-        Body.rotate(this.body, -0.04);
+        //Body.rotate(this.body, -0.04);
     }
 
     show(){

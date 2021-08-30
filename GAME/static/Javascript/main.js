@@ -7,25 +7,22 @@ let tower = new Tower();
 tower.setProperties();
 tower.show();
 
-var stones = [];
+let mouse = Matter.Mouse.create(render.canvas);
+let mouseConstraint = Matter.MouseConstraint.create(engine, {
+  mouse: mouse,
+  constraint: {
+    render: {visible: false}
+  }
+});
+render.mouse = mouse;
 
-stones.push(new Stone(100,100));
-stones.push(new Stone(200,50));
-stones.push(new Stone(300,-50));
-stones.push(new Stone(220,200));
-stones.push(new Stone(220,200));
-stones.push(new Stone(280,200));
-stones.push(new Stone(320,200));
-stones.push(new Stone(420,200));
+let sling = new SlingShot();
+sling.setSlingShot();
+sling.setProperties();
+sling.show();
 
-for(let i=0; i<stones.length; i++){
-    stones[i].setProperties();
-    stones[i].show();
-    stones[i].move();
-}
 
-tower.move();
-
+World.add(engine.world, [mouseConstraint, sling]);
 Engine.update(engine);
 Matter.Runner.run(engine);
 Render.run(render);

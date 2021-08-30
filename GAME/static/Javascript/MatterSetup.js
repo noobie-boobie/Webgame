@@ -2,7 +2,12 @@ var Engine = Matter.Engine,
     Render = Matter.Render,
     World = Matter.World,
     Bodies = Matter.Bodies,
-    Body = Matter.Body;
+    Body = Matter.Body,
+    Events = Matter.Events,
+        Constraint = Matter.Constraint,
+        MouseConstraint = Matter.MouseConstraint,
+        Mouse = Matter.Mouse,
+        Composite = Matter.Composite;
 
 var engine = Engine.create();
 
