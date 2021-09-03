@@ -1,10 +1,13 @@
 class Enemy{
     constructor(x) {
-        this.x = x;
+        this.x = 800;
         this.y = 600-150;
         this.w = 100;
         this.h = 190;
-
+        this.speed = Math.random() * 0.2 + 0.4;
+        this.movement = this.speed;
+        this.health = 100;
+        this.maxHealth = this.health;
         this.body = Matter.Bodies.rectangle(this.x, this.y, this.w, this.h);
     }
 
@@ -30,6 +33,7 @@ class Enemy{
             }
 
         );
+        Matter.Body.set(this.body, "position", {x: this.body.position.x-1, y: this.body.position.y})
     }
 
     show(){
@@ -37,3 +41,4 @@ class Enemy{
     }
 }
 
+ 

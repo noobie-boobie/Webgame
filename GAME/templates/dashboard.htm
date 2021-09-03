@@ -8,23 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@500&display=swap'" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
 </head>
 
 
 <body>
-    
-    <button><a href="{% url 'game' %}">play game</a><button>
-    <div id = "container">
-      <nav>
-          <ul id="menulist">
-             <li><a href="Home.html">Home</a></li>
-             <li><a href="aboutus.html">About Us</a></li>
-             <li><a href="contactus.html">Contact Us</a></li>
-             <li><a href="Help.html">Help</a></li>
-           </ul>
-      </nav>
-    <div>
+
+    <div class = "container">
+        <h2>Control Your Game By Your Hand</h2>
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class = "button">
+            <a href="{% url 'game' %}">play game</a>
+        </div>
+         
+    </div>    
     
 </body>
 </html>

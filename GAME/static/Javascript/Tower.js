@@ -13,11 +13,8 @@ class Tower{
         let sprite = this.body.render.sprite
         sprite.texture = towerImage;
         sprite.xScale = 1;
-        sprite.yScale = 1
+        sprite.yScale = 1.1;
         this.body.friction = 0.03;
-
-
-
     }
 
     move(){

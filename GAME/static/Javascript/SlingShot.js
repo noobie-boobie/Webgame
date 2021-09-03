@@ -27,7 +27,7 @@ class SlingShot {
 
          Events.on(engine, 'afterUpdate', function() {
 
-           if (mouseConstraint.mouse.button === -1 && (Math.abs(ball.position.x-sx) > 40 || Math.abs(ball.position.y - sy)>40))  {
+           if (mouseConstraint.mouse.button === -1 && (Math.abs(ball.position.x-sx) > 20 || Math.abs(ball.position.y - sy) > 20))  {
                console.log("Fire",sx, sy);
                 console.log(ball.position.x, ball.position.y);
 
