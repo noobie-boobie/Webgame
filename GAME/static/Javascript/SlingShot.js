@@ -55,8 +55,12 @@ class SlingShot {
         this.body.friction = 0.03;
 
     }
-
+    
     show(){
         World.add(engine.world, [this.body]);
+    }
+    
+    ball_Pos(){
+        return this.body.position.x;
     }
 }

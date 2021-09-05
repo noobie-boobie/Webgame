@@ -2,7 +2,7 @@ class Ground{
     constructor() {
         this.x = 0;
         this.y = windowHeight;
-        this.w = windowWidth;
+        this.w = 500000;
         this.h = 100;
 
         this.body = Matter.Bodies.rectangle(this.x, this.y, 2*this.w, this.h);
