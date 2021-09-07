@@ -148,6 +148,10 @@ let tower = new Tower();
 tower.setProperties();
 tower.show();
 
+let health1 = new health_Bar(290);
+health1.setProperties();
+health1.show();
+
 
 
 
