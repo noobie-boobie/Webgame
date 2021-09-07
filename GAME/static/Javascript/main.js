@@ -10,12 +10,15 @@ let mouseConstraint = Matter.MouseConstraint.create(engine, {
 });
 render.mouse = mouse;
 
+
 let sling = new SlingShot();
 sling.setSlingShot();
 sling.setProperties();
 sling.show();
 
-
+let health1 = new health_Bar(290);
+health1.setProperties();
+health1.show();
 
 let king = new Box(300, 500,500, 50,  50, 0, "true", 0, 0);
 king.setProperties_King(0);
@@ -69,7 +72,7 @@ setTimeout(() => {
   console.log("enemy");
 }, 10000);*/
 
-let frame = 0,j = 0,j1 = 0,j2 = 0,k = 0,flag = true;
+let frame = 0,j = 0,j1 = 0,j2 = 0,k = 0,flag = true, index;
 function animate(){
     requestAnimationFrame(animate); 
     for(let i = 0;i<10;i++){
@@ -97,11 +100,10 @@ function animate(){
       
     enemies[i].move(); 
     if(enemies[i].position_enemy() <= 350){
-        
-        
+        health1.update_health(0.1);
+        index = health1.check_health();
+        health1.update_img(index);
         enemies[i].update_Health();
-        
-        
     }
     if(enemies[i].check_Health() <= 0){
       enemies.splice(i,0);
@@ -148,9 +150,7 @@ let tower = new Tower();
 tower.setProperties();
 tower.show();
 
-let health1 = new health_Bar(290);
-health1.setProperties();
-health1.show();
+
 
 
 
