@@ -1,7 +1,7 @@
 class SlingShot {
     constructor() {
-        this.x = 140;
-        this.y = 300;
+        this.x = 120;
+        this.y = windowHeight- 320;
         this.width = 1;
         this.height = 90;
         this.slingX = this.x;

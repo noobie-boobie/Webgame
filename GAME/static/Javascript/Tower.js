@@ -1,7 +1,7 @@
 class Tower{
     constructor() {
         this.x = 100;
-        this.y = 600-150;
+        this.y = windowHeight- 150
         this.w = 100;
         this.h = 190;
 

@@ -20,8 +20,8 @@ let health1 = new health_Bar(290);
 health1.setProperties();
 health1.show();
 
-let king = new Box(300, 500,500, 50,  50, 0, "true", 0, 0);
-king.setProperties_King(0);
+let king = new King();
+king.setProperties_King();
 king.show();
 
 
@@ -120,7 +120,7 @@ function animate(){
     }
     if(enemies[0].position_enemy() <= 350 && flag){
     if(frame%5 === 0 ){
-      king.setProperties_King(k%5);
+      king.update_img(k%5);
       k++;
     }
     frame++;

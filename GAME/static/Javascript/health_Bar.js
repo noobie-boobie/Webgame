@@ -1,6 +1,6 @@
 class health_Bar{
     constructor(x){
-        this.y = 458;
+        this.y = windowHeight- 140;
         this.x = x;
         this.body = Matter.Bodies.rectangle(this.x,this.y,0.01,0.01);
         this.body.isStatic = true;
