@@ -10,13 +10,14 @@ let mouseConstraint = Matter.MouseConstraint.create(engine, {
 });
 render.mouse = mouse;
 
+let health_attachment = []
 
 let sling = new SlingShot();
 sling.setSlingShot();
 sling.setProperties();
 sling.show();
 
-let health1 = new health_Bar(290);
+let health1 = new health_Bar(290, windowHeight- 140);
 health1.setProperties();
 health1.show();
 
@@ -25,9 +26,60 @@ king.setProperties_King();
 king.show();
 
 
+let zombie_health_bar = [];
+let zombies = [];
+for(let i = 0; i < 10; i++){
+  zombies[i] = new zombie(x);
+  zombies[i].setProperties();
+  zombie_health_bar[i] = new health_Bar(x, windowHeight- 120);
+  zombie_health_bar[i].setProperties();
+  let option = {
+    bodyA : zombies[i].body,
+    bodyB : zombie_health_bar[i].body,
+    length : 100,
+    stiffness : 0
+  }
+  health_attachment[i] = Matter.Constraint.create(option);
+  x += 100;
+}
+let frame = 0, frame1 = 0, j = 0, k = 0, flag = true, index;
+function change(){
+  requestAnimationFrame(change); 
+  for(let i = 0; i < 10; i++){
+    if(frame1 % 10 === 0){
+    zombies[i].update_img(j % 3);
+    }
+    zombie_health_bar[i].move();
+    zombies[i].move();
+    if(zombies[i].position_enemy() <= 350){
+      health1.update_health(0.1);
+      index = health1.check_health();
+      health1.update_img(index);
+      zombies[i].update_Health();
 
-let enemies = [];
-for(let i = 0;i<10;i++){
+    }
+    if(zombies[i].check_Health() <= 0){
+      zombies.splice(i,0);
+      zombies[i].remove_enemy();
+      if(i === zombies.length-1)
+      {
+        flag = false;
+      }
+    }
+}
+j++;
+frame1++;
+  if(zombies[0].position_enemy() <= 350 && flag){
+    if(frame%5 === 0){
+      king.update_img(k%5);
+      k++;
+    }
+    frame++;
+  }  
+}
+
+
+/*for(let i = 0;i<10;i++){
   if(c1 % 3 === 0){
     enemies[i] = new Box(x,100);
     enemies[i].setProperties3(0);
@@ -43,7 +95,7 @@ for(let i = 0;i<10;i++){
   c1++;
   c2++;
  x += 100;
-}
+}*/
 
 /*
 function handleEnemies() {
@@ -72,7 +124,7 @@ setTimeout(() => {
   console.log("enemy");
 }, 10000);*/
 
-let frame = 0,j = 0,j1 = 0,j2 = 0,k = 0,flag = true, index;
+//let frame = 0,j = 0,j1 = 0,j2 = 0,k = 0,flag = true, index;
 function animate(){
     requestAnimationFrame(animate); 
     for(let i = 0;i<10;i++){
@@ -92,7 +144,6 @@ function animate(){
       }
       else   {
         enemies[i].setProperties(j2%20)
-        
         if(i === 8){
           j2++;
           }
@@ -137,8 +188,10 @@ function animate(){
 }
 
 for(let i = 0;i<10;i++){
- // enemies[i].move(); 
-  enemies[i].show(); 
+ // enemies[i].move();
+  World.add(engine.world, health_attachment[i]);
+  zombie_health_bar[i].show();
+  zombies[i].show(); 
 }
 
 
@@ -159,7 +212,7 @@ tower.show();
 
 
 
-animate();
+change();
 
 
 World.add(engine.world, [mouseConstraint, sling]);

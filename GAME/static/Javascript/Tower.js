@@ -4,7 +4,6 @@ class Tower{
         this.y = windowHeight- 150
         this.w = 100;
         this.h = 190;
-
         this.body = Matter.Bodies.rectangle(this.x, this.y, this.w, this.h);
     }
 

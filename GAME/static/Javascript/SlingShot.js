@@ -8,7 +8,6 @@ class SlingShot {
         this.slingY = this.y - (this.height)/2 - 20;
         this.body = Bodies.rectangle(this.x, this.y, this.width, this.height);
     }
-
     setSlingShot(){
         
         let sx = this.slingX;
