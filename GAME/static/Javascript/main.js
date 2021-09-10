@@ -17,13 +17,16 @@ sling.setSlingShot();
 sling.setProperties();
 sling.show();
 
-let health1 = new health_Bar(290, windowHeight- 140);
-health1.setProperties();
-health1.show();
-
 let king = new King();
 king.setProperties_King();
 king.show();
+
+
+let health1 = new health_Bar(290, windowHeight- 140,1000);
+health1.setProperties();
+health1.show();
+
+
 
 
 let zombie_health_bar = [];
@@ -33,13 +36,7 @@ for(let i = 0; i < 10; i++){
   zombies[i].setProperties();
   zombie_health_bar[i] = new health_Bar(x, windowHeight- 120);
   zombie_health_bar[i].setProperties();
-  let option = {
-    bodyA : zombies[i].body,
-    bodyB : zombie_health_bar[i].body,
-    length : 100,
-    stiffness : 0
-  }
-  health_attachment[i] = Matter.Constraint.create(option);
+ 
   x += 100;
 }
 let frame = 0, frame1 = 0, j = 0, k = 0, flag = true, index;
@@ -49,8 +46,11 @@ function change(){
     if(frame1 % 10 === 0){
     zombies[i].update_img(j % 3);
     }
-    zombie_health_bar[i].move();
+    
     zombies[i].move();
+    let tmp = zombies[i].position_enemy();
+    zombie_health_bar[i].move(tmp);
+
     if(zombies[i].position_enemy() <= 350){
       health1.update_health(0.1);
       index = health1.check_health();
@@ -60,7 +60,9 @@ function change(){
     }
     if(zombies[i].check_Health() <= 0){
       zombies.splice(i,0);
+      zombie_health_bar.splice(i,0);
       zombies[i].remove_enemy();
+      zombie_health_bar[i].remove_health_Bar();
       if(i === zombies.length-1)
       {
         flag = false;
@@ -189,7 +191,7 @@ function animate(){
 
 for(let i = 0;i<10;i++){
  // enemies[i].move();
-  World.add(engine.world, health_attachment[i]);
+  //World.add(engine.world, health_attachment[i]);
   zombie_health_bar[i].show();
   zombies[i].show(); 
 }

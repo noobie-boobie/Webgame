@@ -3,6 +3,7 @@ class zombie{
         this.x = x;
         this.y = windowHeight- 70;
         this.health = 100;
+        this.power = 50;
         this.body = Matter.Bodies.rectangle(this.x, this.y, 50, 50);
         this.body.isStatic = false;
     }
@@ -29,6 +30,10 @@ class zombie{
     update_Health(){
         this.health -= 1;
     }
+    get_Power(){
+        return this.power;
+    }
+    
     check_Health(){
         return this.health;
     }

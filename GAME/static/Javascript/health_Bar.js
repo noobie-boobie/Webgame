@@ -1,10 +1,10 @@
 class health_Bar{
-    constructor(x, y){
+    constructor(x, y,health){
         this.y = y;
         this.x = x;
         this.body = Matter.Bodies.rectangle(this.x,this.y,0.01,0.01);
         this.body.isStatic = true;
-        this.health = 1000
+        this.health = health;
         this.total_health = this.health
         this.body.collisionFilter = {
             'group': -1,
@@ -20,8 +20,8 @@ class health_Bar{
         sprite.yScale = 0.12;
        
     }
-    move(){
-        Matter.Body.set(this.body, "position", {x: this.body.position.x-1, y: this.body.position.y})
+    move(xx){
+        Matter.Body.set(this.body, "position", {x: xx, y: this.body.position.y})
     }
     position_enemy(){
         return this.body.position.x;
@@ -29,6 +29,9 @@ class health_Bar{
     update_health(power){
         this.health -= power;
         
+    }
+    remove_health_Bar(){
+        World.remove(engine.world,this.body);
     }
     
     check_health(){
