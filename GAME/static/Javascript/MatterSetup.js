@@ -18,7 +18,7 @@ var render = Render.create({
                 options: {
                     width: windowWidth,
                     height: windowHeight,
-                    wireframes: false,
+                    wireframes: true,
                     background: backgroundImage,
                     frictionAir: 0
                 },

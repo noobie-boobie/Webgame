@@ -209,13 +209,54 @@ tower.setProperties();
 tower.show();
 
 
+var ws_url = 'ws://' + window.location.host + '/ws/test/';
+var socket = new WebSocket(ws_url);
+socket.onopen = function (event){
+    console.log("Opening Camera");
+}
 
+socket.onclose = function (ev){
+    alert('Connection closed');
+    cancelAnimationFrame();
+}
 
+socket.onerror = function (event) {
+    alert('An error occured with the camera');
+}
 
+let hand = new Hand(0,0);
+hand.setProperties();
+hand.show();
 
+socket.onmessage = function (event){
+    var data = JSON.parse(event.data);
+    finger = data.Finger;
+    X = data.X;
+    Y = data.Y;
 
+    sling.checkCollision();
+    if(finger ==='100') {
+        sling.toStatic(false);
+        if(sling.allowShoot){
+            console.log('Shoot');
+            sling.shoot();
+        }
+        hand.move(X, Y);
+        var XY = hand.getHandXY();
+        sling.dragBall = sling.handOverBall(XY[0], XY[1]);
 
+    }
+    else if(finger ==='110') {
 
+        if(sling.dragBall){
+            sling.toStatic(true);
+            hand.move(X, Y);
+            sling.moveBall(X, Y);
+            sling.allowShoot = true;
+        }
+
+    }
+}
 
 change();
 
