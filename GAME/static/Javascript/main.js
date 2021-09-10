@@ -21,22 +21,22 @@ let king = new King();
 king.setProperties_King();
 king.show();
 
-
-let health1 = new health_Bar(290, windowHeight- 140,1000);
+let king_health = king.get_Health();
+let health1 = new health_Bar(290, windowHeight- 140,1000, king_health);
 health1.setProperties();
 health1.show();
 
-
-
-
 let zombie_health_bar = [];
 let zombies = [];
+let zombie_health;
+
 for(let i = 0; i < 10; i++){
   zombies[i] = new zombie(x);
   zombies[i].setProperties();
-  zombie_health_bar[i] = new health_Bar(x, windowHeight- 120);
+  zombie_health = zombies[0].check_Health();
+  zombie_health_bar[i] = new health_Bar(x, windowHeight- 120, zombie_health);
   zombie_health_bar[i].setProperties();
- 
+  
   x += 100;
 }
 let frame = 0, frame1 = 0, j = 0, k = 0, flag = true, index;
@@ -46,17 +46,20 @@ function change(){
     if(frame1 % 10 === 0){
     zombies[i].update_img(j % 3);
     }
-    
+    if(zombies[i].position_enemy() > 350){
     zombies[i].move();
+    } 
     let tmp = zombies[i].position_enemy();
     zombie_health_bar[i].move(tmp);
 
     if(zombies[i].position_enemy() <= 350){
-      health1.update_health(0.1);
+      health1.update_health(zombies[i].get_Power());
       index = health1.check_health();
       health1.update_img(index);
       zombies[i].update_Health();
-
+      zombie_health_bar[i].update_health(king.get_Power());
+      index = zombie_health_bar[i].check_health();
+      zombie_health_bar[i].update_img(index);
     }
     if(zombies[i].check_Health() <= 0){
       zombies.splice(i,0);
