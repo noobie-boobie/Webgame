@@ -14,7 +14,6 @@ var engine = Engine.create();
 var render = Render.create({
                 element: document.body,
                 engine: engine,
-
                 options: {
                     width: windowWidth,
                     height: windowHeight,

@@ -61,6 +61,12 @@ function change(){
       index = zombie_health_bar[i].check_health();
       zombie_health_bar[i].update_img(index);
     }
+    if(sling.enemy_Collisions(i)){
+      zombie_health_bar[i].update_health(40);
+      zombies[i].update_Health(40);
+      index = zombie_health_bar[i].check_health();
+      zombie_health_bar[i].update_img(index);
+    }
     if(zombies[i].check_Health() <= 0){
       zombies.splice(i,0);
       zombie_health_bar.splice(i,0);
@@ -72,6 +78,7 @@ function change(){
       }
     }
 }
+sling.check_Collision_with_bodies();
 j++;
 frame1++;
   if(zombies[0].position_enemy() <= 350 && flag){

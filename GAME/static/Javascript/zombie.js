@@ -27,8 +27,8 @@ class zombie{
     remove_enemy(){
         World.remove(engine.world,this.body);
     }
-    update_Health(){
-        this.health -= 1;
+    update_Health(power){
+        this.health -= power;
     }
     get_Power(){
         return this.power;

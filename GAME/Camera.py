@@ -20,7 +20,7 @@ prev = None
 def initSetup():
     global cap, mp_hands, mp_draw, running, indexDip, indexTip, middleDip, middleTip,ringTip, ringDip
     global pinkyTip, pinkyDip, thumpTip, Finger, hands, prev
-    cap = cv.VideoCapture(1, cv.CAP_DSHOW)
+    cap = cv.VideoCapture(0, cv.CAP_DSHOW)
     running = True
 
     print('Starting Camera...')

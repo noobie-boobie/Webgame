@@ -12,7 +12,6 @@ class Stone{
     setProperties(){
         this.body.isStatic = false;
         this.body.restitution = 0.5;
-
         //this.body.mass = this.body.mass;
         // let sprite = this.body.render.sprite
         // sprite.texture = ballImage;

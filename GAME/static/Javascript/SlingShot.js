@@ -14,6 +14,7 @@ class SlingShot {
         this.currentBall = -1;
         this.dragBall = false;
         this.remove = false;
+        this.ball_pointer = 0;
     }
     setSlingShot(){
 
@@ -81,14 +82,35 @@ class SlingShot {
     checkCollision(){
         for(let i= 0; i <= this.currentBall; i++){
             if(Matter.SAT.collides(this.Balls[i].body, ground.body).collided){
-                console.log("Collided with Ground");
+                //console.log("Collided with Ground");
 
                 this.removeBall(i);
 
             }
         }
     }
-
+    check_Collision_with_bodies(){
+        if(Matter.SAT.collides(this.Balls[this.ball_pointer].body, ground.body).collided || Matter.SAT.collides(this.Balls[this.ball_pointer].body, tower.body).collided || Matter.SAT.collides(this.Balls[this.ball_pointer].body, king.body).collided){
+            this.ball_pointer += 1;
+        }
+    }
+    enemy_Collision(k){
+        if(Matter.SAT.collides(this.Balls[this.ball_pointer].body, zombies[k].body).collided){
+            console.log("collision happened");
+            this.ball_pointer += 1;
+            return true;
+        }
+        return false;
+    }
+    enemy_Collisions(k){
+        for(let i= 0; i <= this.currentBall; i++){
+            if(Matter.SAT.collides(this.Balls[i].body, zombies[k].body).collided){
+                //console.log("Collided with Ground");
+                return true;
+            }
+        }
+        return false;
+    }
     removeBall(i){
         World.remove(engine.world, this.Balls[i].body);
         this.Balls.splice(i,i);
