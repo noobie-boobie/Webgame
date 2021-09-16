@@ -59,8 +59,13 @@ for(let i = 0; i < 10; i++){
   x += 100;
 }
 let frame = 0, frame1 = 0, j = 0, k = 0, flag = true, index;
+
+//
 function change(){
-  requestAnimationFrame(change); 
+  requestAnimationFrame(change);
+
+  sling.checkCollision();
+  sling.checkEnemyCollision();
   for(let i = 0; i < 10; i++){
     if(frame1 % 10 === 0){
     zombies[i].update_img(j % 3);
@@ -113,10 +118,7 @@ function change(){
       zombie_health_bar[i].update_health(king.get_Power());
       index = zombie_health_bar[i].check_health();
       zombie_health_bar[i].update_img(index);
-      
 
-
-     
     }
     if(wave2_mons[i].position_enemy() <= 399){
       health1.update_health(wave2_mons[i].get_Power());
@@ -132,16 +134,7 @@ function change(){
       
       
     }
-   /* if(zombies[i].check_Health() <= 0){
-      zombies.splice(i,0);
-      zombie_health_bar.splice(i,0);
-      zombies[i].remove_enemy();
-      zombie_health_bar[i].remove_health_Bar();
-      if(i === zombies.length-1)
-      {
-        flag = false;
-      }
-    }*/
+
 }
 j++;
 frame1++;
@@ -159,52 +152,8 @@ frame1++;
 }
 
 
-/*for(let i = 0;i<10;i++){
-  if(c1 % 3 === 0){
-    enemies[i] = new Box(x,100);
-    enemies[i].setProperties3(0);
-  } 
-  else if(c2 % 5 === 0){
-    enemies[i] = new Box(x,100);
-    enemies[i].setProperties2(0);
-  }
-  else {
-    enemies[i] = new Box(x,100);
-    enemies[i].setProperties(0);
-  }
-  c1++;
-  c2++;
- x += 100;
-}*/
 
-/*
-function handleEnemies() {
-  for(let i = 0;i<enemies.length;i++){
-    enemies[i].E1.move();
-    enemies[i].E1.show();
-  }
-  
-  if(frame % 100 === 0){
-    enemies.push(E1)
-  }
-}*/
-/*
-enemies.push(new Box(1200));
-enemies.push(new Box(1100));
-enemies.push(new Box(1000));
-enemies.push(new Box(900));
-enemies.push(new Box(800));*/
 
-/*
-setInterval(() => {
-  console.log("game");
-}, 1000);
-
-setTimeout(() => {
-  console.log("enemy");
-}, 10000);*/
-
-//let frame = 0,j = 0,j1 = 0,j2 = 0,k = 0,flag = true, index;
 function animate(){
     requestAnimationFrame(animate); 
     for(let i = 0;i<10;i++){
@@ -245,9 +194,7 @@ function animate(){
       }
     }
   
-    
-  
-    //enemies[i].show(); 
+
     }
     if(enemies[0].position_enemy() <= 350 && flag){
     if(frame%5 === 0 ){
@@ -256,20 +203,11 @@ function animate(){
     }
     frame++;
   }
-  /*  
-    if(frame % 100 === 0)
-    {
-      j = j+ 1 ;
-      enemies[j].show(); 
-         
-    }
-    
-    */
+
 }
 
 for(let i = 0;i<10;i++){
- // enemies[i].move();
-  //World.add(engine.world, health_attachment[i]);
+
   zombie_health_bar[i].show();
   zombies[i].show(); 
 }
@@ -295,6 +233,7 @@ socket.onopen = function (event){
 socket.onclose = function (ev){
     alert('Connection closed');
     cancelAnimationFrame();
+    engine.enabled = false;
 }
 
 socket.onerror = function (event) {

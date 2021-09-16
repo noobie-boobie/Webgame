@@ -26,6 +26,9 @@ class King{
         return this.health;
     }
 
+    remove(){
+        World.remove(engine.world, this.body);
+    }
     show(){
         World.add(engine.world, this.body);
     }

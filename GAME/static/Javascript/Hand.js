@@ -6,6 +6,9 @@ class Hand{
     setProperties(){
         this.body.isStatic = true;
         this.body.collisionFilter.mask = 0;
+        this.body.render.sprite.xScale = 0.2;
+        this.body.render.sprite.yScale = 0.2;
+        this.body.render.sprite.texture = handImage;
     }
 
     move(X, Y){
