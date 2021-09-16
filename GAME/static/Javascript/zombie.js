@@ -1,7 +1,7 @@
 class zombie{
     constructor(x){
         this.x = x;
-        this.y = windowHeight- 70;
+        this.y = windowHeight- 150;
         this.health = 100;
         this.power = 0.1;
         this.body = Matter.Bodies.rectangle(this.x, this.y, 50, 50);

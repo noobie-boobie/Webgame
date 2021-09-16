@@ -1,7 +1,7 @@
 class SlingShot {
     constructor() {
-        this.x = 120;
-        this.y = windowHeight- 320;
+        this.x = 140;
+        this.y = windowHeight- 280;
         this.width = 1;
         this.height = 90;
         this.slingX = this.x;
@@ -78,6 +78,15 @@ class SlingShot {
         return d<=rad;
     }
 
+
+    checkCollision_mons(pos_zom){
+        for(let i= 0; i <= this.currentBall; i++){
+            if(Matter.SAT.collides(this.Balls[i].body, pos_zom.body).collided){
+                return true;
+            }
+        }
+    }
+
     checkCollision(){
         for(let i= 0; i <= this.currentBall; i++){
             if(Matter.SAT.collides(this.Balls[i].body, ground.body).collided){
@@ -101,7 +110,7 @@ class SlingShot {
         console.log(this.b);
         this.body.isStatic = true;
         let sprite = this.body.render.sprite
-        //sprite.texture = slingImage;
+        sprite.texture = slingImage;
         sprite.xScale = 0.28;
         sprite.yScale =0.325;
         this.body.friction = 0.03;

@@ -1,7 +1,7 @@
 class Tower{
     constructor() {
-        this.x = 100;
-        this.y = windowHeight- 150
+        this.x = 270;
+        this.y = windowHeight- 160
         this.w = 100;
         this.h = 190;
         this.body = Matter.Bodies.rectangle(this.x, this.y, this.w, this.h);

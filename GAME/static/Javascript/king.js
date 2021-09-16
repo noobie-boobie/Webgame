@@ -1,6 +1,6 @@
 class King{
     constructor(){
-        this.body = Matter.Bodies.rectangle(300, windowHeight- 95, 50, 50);
+        this.body = Matter.Bodies.rectangle(350, windowHeight- 95, 50, 50);
         this.body.isStatic = true;
         this.power = 10;
         this.health = 1000;

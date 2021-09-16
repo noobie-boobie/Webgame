@@ -20,7 +20,7 @@ prev = None
 def initSetup():
     global cap, mp_hands, mp_draw, running, indexDip, indexTip, middleDip, middleTip,ringTip, ringDip
     global pinkyTip, pinkyDip, thumpTip, Finger, hands, prev
-    cap = cv.VideoCapture(1, cv.CAP_DSHOW)
+    cap = cv.VideoCapture(0, cv.CAP_DSHOW)
     running = True
 
     print('Starting Camera...')
@@ -112,10 +112,10 @@ def getFrame():
                 elif ringDip[1] < ringTip[1]:
                     Finger[3] = '0'
 
-                # if pinkyTip[1] < pinkyDip[1]:
-                #     Finger[4] = '1'
-                # elif pinkyDip[1] < pinkyTip[1]:
-                #     Finger[4] = '0'
+                if pinkyTip[1] < pinkyDip[1]:
+                    Finger[4] = '1'
+                elif pinkyDip[1] < pinkyTip[1]:
+                    Finger[4] = '0'
 
                 cv.putText(image, Finger[1], (20, 50), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0))
                 cv.putText(image, Finger[2], (50, 50), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0))

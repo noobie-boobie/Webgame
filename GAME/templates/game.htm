@@ -15,35 +15,46 @@
 </head>
 <body bgcolor="black">
 
+<<<<<<< Updated upstream
        
-        <img src="{%static/images/ball.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/ground.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/sling.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/mons10.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/mons11.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/mons12.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/mons16.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/mons17.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/mons18.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/King1.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/King2.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/King3.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/King4.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/King5.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/bar1.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/bar2.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/bar3.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/bar4.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/bar5.png %}" width = "1px" height = "1px" alt="here">
-        <img src="{%static/images/moving_mons/bar6.png %}" width = "1px" height = "1px" alt="here">
+        
        
+=======
+        <img src="{% static '/images/ball.png' %}" width="10px" height="10px" alt="HEHE">
+        <img src="{% static '/images/sling.png' %}" width="10px" height="10px" alt="HEHE">
+        <!--<img src="{% static '/images/ground.png' %}" width="10px" height="10px" alt="HEHE">-->
+        <img src="{% static '/images/bg_img.jpg' %}" width="10px" height="10px" alt="HEHE">
+        <img src="{% static '/images/castle_wall.png' %}" width="10px" height="10px" alt="HEHE">
+         <img src="{% static '/images/grd_img.png' %}" width="10px" height="10px" alt="HEHE">
+         <img src="{% static '/images/sling.png' %}" width="10px" height="10px" alt="HEHE">
+
+         <img src="{% static '/images/moving_mons/mons10.png' %}" alt="hehe" width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/mons11.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/mons12.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/King1.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/King2.png' %}" alt="hehe"  width="10px" height="10px">
+
+         <img src="{% static '/images/moving_mons/monster16.png' %}" alt="hehe"  width="10px" height="10px">
+          <img src="{% static '/images/moving_mons/monster17.png' %}" alt="hehe"  width="10px" height="10px">
+           <img src="{% static '/images/moving_mons/monster18.png' %}" alt="hehe"  width="10px" height="10px">
+  
+        <img src="{% static '/images/moving_mons/King3.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/King4.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/King5.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/bar1.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/bar2.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/bar3.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/bar4.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/bar5.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/bar6.png' %}" alt="hehe"  width="10px" height="10px">
+>>>>>>> Stashed changes
 
     <script>
-        let ballImage = "{% static '/images/ball.png' %}";
-        let groundImage = "{% static '/images/ground.png' %}"
-        let backgroundImage = "{% static '/images/background.jpg' %}"
+        let ballImage = "{% static '/images/ball.png' %}"
+        //let groundImage = "{% static '/images/grd_img.png' %}"
+        let backgroundImage = "{% static '/images/bg_img.jpg' %}"
         let walkImage = "{% static '/images/giphy.gif' %}"
-        let towerImage = "{% static '/images/castletower.png' %}"
+        let towerImage = "{% static '/images/castle_wall.png' %}"
         let slingImage = "{% static '/images/sling.png' %}"
         let monster_img = "{% static '/images/monster.png' %}"
         let dragon_img = "{% static '/images/dragon.png' %}"
@@ -59,6 +70,7 @@
         let monster16 = "{% static '/images/moving_mons/mons16.png' %}"
         let monster17 = "{% static '/images/moving_mons/mons17.png' %}"
         let monster18 = "{% static '/images/moving_mons/mons18.png' %}"
+        let mons_img = [monster16,monster17,monster18];
         let monster13 = "{% static '/images/moving_mons/mons13.png' %}"
         let monster14 = "{% static '/images/moving_mons/mons14.png' %}"
         let monster15 = "{% static '/images/moving_mons/mons15.png' %}"
@@ -89,6 +101,7 @@
     <script src = "{% static 'Javascript/SlingShot.js' %}"></script>
     <script src = "{% static 'Javascript/king.js' %}"></script>
     <script src = "{% static 'Javascript/zombie.js' %}"></script>
+     <script src = "{% static 'Javascript/wave2.js' %}"></script>
     <script src = "{% static 'Javascript/main.js' %}"></script>
     
 
