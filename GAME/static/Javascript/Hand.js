@@ -13,7 +13,7 @@ class Hand{
 
     move(X, Y){
         //console.log('Moving Hand');
-        Matter.Body.set(this.body, "position", {x: 2*X-300, y: 2*Y});
+        Matter.Body.set(this.body, "position", {x: 2*X-300, y: 2*Y+400});
 
     }
 

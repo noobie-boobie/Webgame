@@ -1,7 +1,7 @@
 class SlingShot {
     constructor() {
-        this.x = 120;
-        this.y = windowHeight- 320;
+        this.x = 150;
+        this.y = windowHeight- 280;
         this.width = 1;
         this.height = 90;
         this.slingX = this.x;
@@ -39,7 +39,7 @@ class SlingShot {
 
     moveBall(X, Y){
         if(this.dragBall && (this.currentBall > -1)){
-            Matter.Body.set(this.Balls[this.currentBall].body, "position", {x: 2*X-300, y: 2*Y});
+            Matter.Body.set(this.Balls[this.currentBall].body, "position", {x: 2*X-300, y: 2*Y+400});
             this.allowShoot = true;
         }
     }

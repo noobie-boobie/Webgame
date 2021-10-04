@@ -1,6 +1,6 @@
 class health_Bar{
     constructor(x, y,health){
-        this.y = y;
+        this.y = y-50;
         this.x = x;
         this.body = Matter.Bodies.rectangle(this.x,this.y,0.01,0.01);
         this.body.isStatic = true;

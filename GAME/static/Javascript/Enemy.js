@@ -18,7 +18,6 @@ class Enemy{
         // sprite.xScale = 1;
         // sprite.yScale = 1
 
-
     }
 
     move(){

@@ -19,6 +19,6 @@ from GAME import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.dashboard),
+    path('', views.dashboard, name='dashboard'),
     path('game/',views.game,name = 'game')
 ]

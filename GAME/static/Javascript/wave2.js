@@ -4,14 +4,14 @@ class wave2_monster{
         this.y = windowHeight- 150;
         this.health = 170;
         this.power = 0.5;
-        this.body = Matter.Bodies.rectangle(this.x, this.y, 50, 50);
+        this.body = Matter.Bodies.rectangle(this.x, this.y, 80, 100);
         this.body.isStatic = false;
     }
     setProperties(){
         let sprite = this.body.render.sprite;
         sprite.texture = mons_img[0];
-        sprite.xScale = 0.33;
-        sprite.yScale = 0.33;
+        sprite.xScale = 0.43;
+        sprite.yScale = 0.53;
         this.body.friction = 0.03;
     }
     move(){

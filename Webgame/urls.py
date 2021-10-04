@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import RedirectView
+
 from GAME import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.dashboard),
-    path('game/',views.game,name = 'game')
+    path('',views.dashboard, name = 'dashboard'),
+    path('game/',views.game,name = 'game'),
+    #path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('images/favicon.ico')))
 ] 
