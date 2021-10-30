@@ -291,7 +291,7 @@ socket.onmessage = function (event){
         console.log("closed");
 
     }
-    else if (finger === '1001'){
+    else if (finger === '0011'){
         if (!isGameover){
             console.log('Gameover');
 
