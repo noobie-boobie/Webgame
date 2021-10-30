@@ -12,52 +12,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
 
+    <style>
+        #cameraImg{
+            position: absolute;
+            width: 240px;
+            height: 170px;
+            left: 82%;
+            opacity: 0.5;
+        }
+
+    </style>
 
     
 </head>
 <body bgcolor="black">
-              <img id="cameraImg" width="200" height="150" src="" alt = 'HaliE'>
-         <img src="{% static '/images/Gameover/G.png' %}" width="10px" height="10px" alt="HEHE">
-          <img src="{% static '/images/Gameover/A.png' %}" width="10px" height="10px" alt="HEHE">
-          <img src="{% static '/images/Gameover/M.png' %}" width="10px" height="10px" alt="HEHE">
-          <img src="{% static '/images/Gameover/E.png' %}" width="10px" height="10px" alt="HEHE">
-          <img src="{% static '/images/Gameover/O.png' %}" width="10px" height="10px" alt="HEHE">
-          <img src="{% static '/images/Gameover/V.png' %}" width="10px" height="10px" alt="HEHE">
-          <img src="{% static '/images/Gameover/R.png' %}" width="10px" height="10px" alt="HEHE">
+        <img id="cameraImg" width="200" height="150" src="" alt = 'Camera'>
 
-        <img src="{% static '/images/pataka.png' %}" width="10px" height="10px" alt="HEHE">
-        <img src="{% static '/images/sling.png' %}" width="10px" height="10px" alt="HEHE">
+         <img src="{% static '/images/Gameover/G.png' %}" width="1px" height="1px" alt="HEHE" style="display: none">
+          <img src="{% static '/images/Gameover/A.png' %}" width="1px" height="1px" alt="HEHE" style="display: none">
+          <img src="{% static '/images/Gameover/M.png' %}" width="1px" height="1px" alt="HEHE" style="display: none">
+          <img src="{% static '/images/Gameover/E.png' %}" width="1px" height="1px" alt="HEHE" style="display: none">
+          <img src="{% static '/images/Gameover/O.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+          <img src="{% static '/images/Gameover/V.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+          <img src="{% static '/images/Gameover/R.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
 
-         <img src="{% static '/images/Gameover/quit-game-hover.png' %}" width="10px" height="10px" alt="HEHE">
-         <img src="{% static '/images/Gameover/quit-game.png' %}" width="10px" height="10px" alt="HEHE">
-        <img src="{% static '/images/Gameover/play-again-hover.png' %}" width="10px" height="10px" alt="HEHE">
-        <img src="{% static '/images/Gameover/play-again.png' %}" width="10px" height="10px" alt="HEHE">
-        <img src="{% static '/images/bg_img.jpg' %}" width="10px" height="10px" alt="HEHE">
-        <img src="{% static '/images/castle_wall.png' %}" width="10px" height="10px" alt="HEHE">
-         <img src="{% static '/images/grd_img.png' %}" width="10px" height="10px" alt="HEHE">
-         <img src="{% static '/images/sling.png' %}" width="10px" height="10px" alt="HEHE">
+        <img src="{% static '/images/pataka.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/sling.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
 
-         <img src="{% static '/images/moving_mons/mons10.png' %}" alt="hehe" width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/mons11.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/mons12.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/King1.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/King2.png' %}" alt="hehe"  width="10px" height="10px">
+         <img src="{% static '/images/Gameover/quit-game-hover.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+         <img src="{% static '/images/Gameover/quit-game.png' %}" width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/Gameover/play-again-hover.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/Gameover/play-again.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/bg_img.jpg' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/castle_wall.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+         <img src="{% static '/images/grd_img.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+         <img src="{% static '/images/sling.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
 
-         <img src="{% static '/images/moving_mons/monster16.png' %}" alt="hehe"  width="10px" height="10px">
-          <img src="{% static '/images/moving_mons/monster17.png' %}" alt="hehe"  width="10px" height="10px">
-           <img src="{% static '/images/moving_mons/monster18.png' %}" alt="hehe"  width="10px" height="10px">
+         <img src="{% static '/images/moving_mons/mons10.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/mons11.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/mons12.png' %}" width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/King1.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/King2.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+
+         <img src="{% static '/images/moving_mons/mons16.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+          <img src="{% static '/images/moving_mons/mons17.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+           <img src="{% static '/images/moving_mons/mons18.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
   
-        <img src="{% static '/images/moving_mons/King3.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/King4.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/King5.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/bar1.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/bar2.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/bar3.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/bar4.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/bar5.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/moving_mons/bar6.png' %}" alt="hehe"  width="10px" height="10px">
-         <img src="{% static '/images/explode.png' %}" alt="hehe"  width="10px" height="10px">
-        <img src="{% static '/images/palm.png' %}" alt="hehe"  width="10px" height="10px">
+        <img src="{% static '/images/moving_mons/King3.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/King4.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/King5.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/bar1.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/bar2.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/bar3.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/bar4.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/bar5.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/moving_mons/bar6.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+         <img src="{% static '/images/explode.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
+        <img src="{% static '/images/palm.png' %}"  width="1px" height="1px" alt="HEHE" style="display: none">
 
 
     <script>

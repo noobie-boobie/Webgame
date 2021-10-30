@@ -44,7 +44,7 @@ class SlingShot {
 
     moveBall(X, Y){
         if(this.dragBall && (this.currentBall > -1)){
-            Matter.Body.set(this.Balls[this.currentBall].body, "position", {x: 2*X-300, y: 2*Y+400});
+            Matter.Body.set(this.Balls[this.currentBall].body, "position", {x: 2*X, y: Y-300});
             this.allowShoot = true;
         }
     }

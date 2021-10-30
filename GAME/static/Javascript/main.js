@@ -48,24 +48,24 @@ let wave2_mons = [];
 let wave2_mons_health;
 
 
-for(let i = 0; i < 10; i++){
+for(let i = 0; i < 5; i++){
   zombies[i] = new zombie(x);
   zombies[i].setProperties();
   zombie_health = zombies[0].check_Health();
   zombie_health_bar[i] = new health_Bar(x, windowHeight- 120, zombie_health);
   zombie_health_bar[i].setProperties();
   
-  x += 100;
+  x += 250;
 }
 
-for(let i = 0; i < 10; i++){
+for(let i = 0; i < 5; i++){
   wave2_mons[i] = new wave2_monster(x);
   wave2_mons[i].setProperties();
   wave2_mons_health = wave2_mons[0].check_Health();
   wave2_health_bar[i] = new health_Bar(x, windowHeight- 120, zombie_health);
   wave2_health_bar[i].setProperties();
   
-  x += 100;
+  x += 250;
 }
 let frame = 0, frame1 = 0, j = 0, k = 0, flag = true, index;
 
@@ -78,7 +78,7 @@ function change() {
     if (runningGame) {
         sling.checkCollision();
         sling.checkEnemyCollision();
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
             if (frame1 % 10 === 0) {
                 zombies[i].update_img(j % 3);
                 wave2_mons[i].update_img(j % 3);
@@ -162,7 +162,7 @@ function change() {
 
 function animate(){
     requestAnimationFrame(animate); 
-    for(let i = 0;i<10;i++){
+    for(let i = 0;i<5;i++){
       if( i % 5 === 0){
           enemies[i].setProperties2(j%20);
           if(i === 5){
@@ -212,12 +212,12 @@ function animate(){
 
 }
 
-for(let i = 0;i<10;i++){
+for(let i = 0;i<5;i++){
 
   zombie_health_bar[i].show();
   zombies[i].show(); 
 }
-for(let i = 0;i<10;i++){
+for(let i = 0;i<5;i++){
   
    wave2_health_bar[i].show();
    wave2_mons[i].show(); 
@@ -275,7 +275,7 @@ socket.onmessage = function (event){
             sling.shoot();
         }
         
-        hand.move(X, Y);
+        hand.move(X, Y-200);
         var XY = hand.getHandXY();
         sling.dragBall = sling.handOverBall(XY[0], XY[1]);
 
@@ -285,7 +285,7 @@ socket.onmessage = function (event){
         if(sling.dragBall){
             sling.toStatic(true);
             hand.move(X, Y);
-            sling.moveBall(X, Y);
+            sling.moveBall(X, Y-200);
             sling.allowShoot = true;
         }
         console.log("closed");
@@ -302,7 +302,6 @@ socket.onmessage = function (event){
         }
 
     }
-
 
      else if (finger === '1110'){
          runningGame = true;
