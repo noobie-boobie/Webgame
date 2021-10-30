@@ -6,4 +6,3 @@ def dashboard(request):
 
 def game(request):
     return render(request,'game.htm')    
-

@@ -1,5 +1,5 @@
 import json
-from .Camera import initSetup, getFingersValue
+from .Camera import initSetup, getFingersValue, stop
 from channels.generic.websocket import WebsocketConsumer
 
 class FingerConsumer(WebsocketConsumer):
@@ -29,4 +29,5 @@ class FingerConsumer(WebsocketConsumer):
         pass
 
     def disconnect(self, code):
-        pass
+        print('Stopping Camera ')
+        stop()

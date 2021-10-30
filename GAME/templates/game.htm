@@ -11,14 +11,27 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.js"></script>
+
+
     
 </head>
 <body bgcolor="black">
+              <img id="cameraImg" width="200" height="150" src="" alt = 'HaliE'>
+         <img src="{% static '/images/Gameover/G.png' %}" width="10px" height="10px" alt="HEHE">
+          <img src="{% static '/images/Gameover/A.png' %}" width="10px" height="10px" alt="HEHE">
+          <img src="{% static '/images/Gameover/M.png' %}" width="10px" height="10px" alt="HEHE">
+          <img src="{% static '/images/Gameover/E.png' %}" width="10px" height="10px" alt="HEHE">
+          <img src="{% static '/images/Gameover/O.png' %}" width="10px" height="10px" alt="HEHE">
+          <img src="{% static '/images/Gameover/V.png' %}" width="10px" height="10px" alt="HEHE">
+          <img src="{% static '/images/Gameover/R.png' %}" width="10px" height="10px" alt="HEHE">
 
-
-        <img src="{% static '/images/ball.png' %}" width="10px" height="10px" alt="HEHE">
+        <img src="{% static '/images/pataka.png' %}" width="10px" height="10px" alt="HEHE">
         <img src="{% static '/images/sling.png' %}" width="10px" height="10px" alt="HEHE">
 
+         <img src="{% static '/images/Gameover/quit-game-hover.png' %}" width="10px" height="10px" alt="HEHE">
+         <img src="{% static '/images/Gameover/quit-game.png' %}" width="10px" height="10px" alt="HEHE">
+        <img src="{% static '/images/Gameover/play-again-hover.png' %}" width="10px" height="10px" alt="HEHE">
+        <img src="{% static '/images/Gameover/play-again.png' %}" width="10px" height="10px" alt="HEHE">
         <img src="{% static '/images/bg_img.jpg' %}" width="10px" height="10px" alt="HEHE">
         <img src="{% static '/images/castle_wall.png' %}" width="10px" height="10px" alt="HEHE">
          <img src="{% static '/images/grd_img.png' %}" width="10px" height="10px" alt="HEHE">
@@ -48,7 +61,19 @@
 
 
     <script>
-        let ballImage = "{% static '/images/ball.png' %}"
+        let GImg = "{% static '/images/Gameover/G.png' %}"
+        let AImg = "{% static '/images/Gameover/A.png' %}"
+        let MImg = "{% static '/images/Gameover/M.png' %}"
+        let EImg = "{% static '/images/Gameover/E.png' %}"
+        let OImg = "{% static '/images/Gameover/o.png' %}"
+        let VImg = "{% static '/images/Gameover/V.png' %}"
+        let RImg = "{% static '/images/Gameover/R.png' %}"
+        let playAgainImg = "{% static '/images/Gameover/play-again.png' %}"
+        let playAgainHoverImg = "{% static '/images/Gameover/play-again-hover.png' %}"
+        let quitGameImg = "{% static '/images/Gameover/quit-game.png' %}"
+        let quitGameHoverImg = "{% static '/images/Gameover/quit-game-hover.png' %}"
+
+        let ballImage = "{% static '/images/pataka.png' %}"
         let explodeImage = "{% static '/images/explode.png' %}"
         let handImage = "{% static '/images/palm.png' %}"
 
@@ -87,24 +112,31 @@
         let bar5 = "{% static '/images/moving_mons/bar5.png' %}"
         let bar6 = "{% static '/images/moving_mons/bar6.png' %}"
         let bar = [bar1, bar2, bar3, bar4, bar5, bar6]
+
+        let backgroundSound = "{% static '/Sound/background.mp3' %}"
     </script>
 
+        <script src="{% static 'Javascript/GameOver.js' %}"></script>
     <script src="{% static 'Javascript/Hand.js' %}"></script>
- <script src = "{% static 'Javascript/AllAttributes.js' %}"></script>
+    <script src = "{% static 'Javascript/AllAttributes.js' %}"></script>
     <script src="{% static 'Javascript/MatterSetup.js' %}"></script>
     <script src = "{% static 'Javascript/Stone.js' %}"></script>
     <script src = "{% static 'Javascript/Ground.js' %}"></script>
     <script src = "{% static 'Javascript/Tower.js' %}"></script>
     <script src = "{% static 'Javascript/health_Bar.js' %}"></script>
     <script src = "{% static 'Javascript/Box.js' %}"></script>
-     <script src = "{% static 'Javascript/Weapon.js' %}"></script>
+        <script src = "{% static 'Javascript/Weapon.js' %}"></script>
     <script src = "{% static 'Javascript/SlingShot.js' %}"></script>
     <script src = "{% static 'Javascript/king.js' %}"></script>
     <script src = "{% static 'Javascript/zombie.js' %}"></script>
      <script src = "{% static 'Javascript/wave2.js' %}"></script>
     <script src = "{% static 'Javascript/main.js' %}"></script>
     
+    <audio src="{% static 'Sound/background.mp3' %}" id="my_audio" loop="loop"></audio>
 
-    
+
+<script>
+    //document.getElementById('cameraImg').src = 'data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAAKAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDnf2Jv2HfH/wAEv+CdPgLxn8Y9Ul2+NdKTxJo2gi7JSwsblxc2YDi4lG14vKnCJ5QAuGSWMuGNZV3FZLdyqIekjD749a5n9gPx1438Xf8ABPjwVqPizxjquqXFwNVubifUdQlneWaXWdQeSRmdiWd3JZmPLEknJNdbBaWkkCO9rGzMgJJQEk4rTC0I1EzjxFZ03sf/2Q==';
+</script>
 </body>
 </html>

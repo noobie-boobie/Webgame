@@ -1,6 +1,6 @@
 class Stone{
 
-    constructor(x,y,r=25) {
+    constructor(x,y,r=30) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -14,8 +14,8 @@ class Stone{
         this.body.mass = this.body.mass*2;
         let sprite = this.body.render.sprite
         sprite.texture = ballImage;
-        sprite.xScale = 0.06;
-        sprite.yScale = 0.06;
+        sprite.xScale = 0.14;
+        sprite.yScale = 0.14;
         this.body.friction = 0.5;
 
     }

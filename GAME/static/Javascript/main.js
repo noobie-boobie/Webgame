@@ -1,5 +1,13 @@
 //let E1 = new Enemy();
 let c1 = 0,c2 = 0,x=1300;
+var runningGame = true
+var isGameover = false;
+
+// var audio = new Audio(backgroundSound);
+// audio.play();
+// window.onload=function(){
+//     document.getElementById("my_audio").play();
+//   }
 
 let mouse = Matter.Mouse.create(render.canvas);
 let mouseConstraint = Matter.MouseConstraint.create(engine, {
@@ -25,6 +33,7 @@ let king = new King();
 king.setProperties_King();
 king.show();
 
+let gameOver = new GameOver();
 let king_health = king.get_Health();
 let health1 = new health_Bar(350, windowHeight- 140,1000, king_health);
 health1.setProperties();
@@ -61,94 +70,91 @@ for(let i = 0; i < 10; i++){
 let frame = 0, frame1 = 0, j = 0, k = 0, flag = true, index;
 
 //
-function change(){
-  requestAnimationFrame(change);
-
-  sling.checkCollision();
-  sling.checkEnemyCollision();
-  for(let i = 0; i < 10; i++){
-    if(frame1 % 10 === 0){
-    zombies[i].update_img(j % 3);
-    wave2_mons[i].update_img(j%3);
+function change() {
+    requestAnimationFrame(change);
+    if (isGameover){
+        gameOver.updateButtons();
     }
-    if(zombies[i].position_enemy() > 350){
-    zombies[i].move();
-    } 
-    if(wave2_mons[i].position_enemy() > 350)
-    {
-      wave2_mons[i].move();
-    }
-    let tmp = zombies[i].position_enemy();
-    let tmp2 = wave2_mons[i].position_enemy();
-    zombie_health_bar[i].move(tmp);
-    wave2_health_bar[i].move(tmp2);
+    if (runningGame) {
+        sling.checkCollision();
+        sling.checkEnemyCollision();
+        for (let i = 0; i < 10; i++) {
+            if (frame1 % 10 === 0) {
+                zombies[i].update_img(j % 3);
+                wave2_mons[i].update_img(j % 3);
+            }
+            if (zombies[i].position_enemy() > 350) {
+                zombies[i].move();
+            }
+            if (wave2_mons[i].position_enemy() > 350) {
+                wave2_mons[i].move();
+            }
+            let tmp = zombies[i].position_enemy();
+            let tmp2 = wave2_mons[i].position_enemy();
+            zombie_health_bar[i].move(tmp);
+            wave2_health_bar[i].move(tmp2);
 
-    if(zombies[i].check_Health() <= 0){
-      zombies.splice(i,0);
-      zombie_health_bar.splice(i,0);
-      zombies[i].remove_enemy();
-      zombie_health_bar[i].remove_health_Bar();
-      if(i === zombies.length-1)
-      {
-        flag = false;
-      }
-    }
-    
-    if(wave2_mons[i].check_Health() <= 0){
-      wave2_mons.splice(i,0);
-      wave2_health_bar.splice(i,0);
-      wave2_mons[i].remove_enemy();
-      wave2_health_bar[i].remove_health_Bar();
-      if(i === wave2_mons.length-1)
-      {
-        flag = false;
-      }
-    }
-    
-    
+            if (zombies[i].check_Health() <= 0) {
+                zombies.splice(i, 0);
+                zombie_health_bar.splice(i, 0);
+                zombies[i].remove_enemy();
+                zombie_health_bar[i].remove_health_Bar();
+                if (i === zombies.length - 1) {
+                    flag = false;
+                }
+            }
 
-    if(zombies[i].position_enemy() <= 399){
-      health1.update_health(zombies[i].get_Power());
-      index = health1.check_health();
-      if(flag){
-            health1.update_img(index);
-      }
-    
-      zombies[i].update_Health();
-      zombie_health_bar[i].update_health(king.get_Power());
-      index = zombie_health_bar[i].check_health();
-      zombie_health_bar[i].update_img(index);
+            if (wave2_mons[i].check_Health() <= 0) {
+                wave2_mons.splice(i, 0);
+                wave2_health_bar.splice(i, 0);
+                wave2_mons[i].remove_enemy();
+                wave2_health_bar[i].remove_health_Bar();
+                if (i === wave2_mons.length - 1) {
+                    flag = false;
+                }
+            }
 
-    }
-    if(wave2_mons[i].position_enemy() <= 399){
-      health1.update_health(wave2_mons[i].get_Power());
-       index = health1.check_health();
-       if(flag){
-            health1.update_img(index);
 
-      }
-      wave2_mons[i].update_Health();
-      wave2_health_bar[i].update_health(king.get_Power());
-      index = wave2_health_bar[i].check_health();
-      wave2_health_bar[i].update_img(index);
-      
-      
+            if (zombies[i].position_enemy() <= 399) {
+                health1.update_health(zombies[i].get_Power());
+                index = health1.check_health();
+                if (flag) {
+                    health1.update_img(index);
+                }
+
+                zombies[i].update_Health();
+                zombie_health_bar[i].update_health(king.get_Power());
+                index = zombie_health_bar[i].check_health();
+                zombie_health_bar[i].update_img(index);
+
+            }
+            if (wave2_mons[i].position_enemy() <= 399) {
+                health1.update_health(wave2_mons[i].get_Power());
+                index = health1.check_health();
+                if (flag) {
+                    health1.update_img(index);
+
+                }
+                wave2_mons[i].update_Health();
+                wave2_health_bar[i].update_health(king.get_Power());
+                index = wave2_health_bar[i].check_health();
+                wave2_health_bar[i].update_img(index);
+
+            }
+        }
+
+    j++;
+    frame1++;
+    if ((zombies[0].position_enemy() <= 350) || (wave2_mons[0].position_enemy <= 350)) {
+        if (frame % 5 === 0) {
+            king.update_img(k % 5);
+            k++;
+        }
+        frame++;
+
     }
 
 }
-j++;
-frame1++;
-  if( (zombies[0].position_enemy() <= 350  ) || (wave2_mons[0].position_enemy <= 350 ) ){
-    if(frame%5 === 0){
-      king.update_img(k%5);
-      k++;
-    }
-    frame++;
-  }  
-
-
-
-
 }
 
 
@@ -164,7 +170,7 @@ function animate(){
           }
       }
       
-      else if(i % 3 === 0   && i != 0) {
+      else if(i % 3 === 0   && i !== 0) {
         enemies[i].setProperties3(j1%20)
         
         if(i === 9){
@@ -244,11 +250,21 @@ let hand = new Hand(0,0);
 hand.setProperties();
 hand.show();
 
+var camera = document.getElementById('cameraImg');
+
 socket.onmessage = function (event){
     var data = JSON.parse(event.data);
     finger = data.Finger;
     X = data.X;
     Y = data.Y;
+    var img = data.I;
+
+
+    imgstr = 'data:image/png;base64,'+img;
+    console.log(imgstr);
+
+   // var temp ='data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAAKAAoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5l/4Iw/APxN4p/ZN8ZfG7WdT1GPwh/wAJcNN0awF9H5FxdQwpNdN5Ji3xD97a5ZJAs2za6AR4b2O7gsVu5VEhGJGH6/WvnP8A4IzfFH4ma7+zv47+Hut/EXXbzQPD19ZLoGh3WrzSWemLN9qlmFvCzFIQ8jM7bANzEsck5r35kRmLMoJJySR1q8LRU09Tlr13Tex//9k=';
+    camera.src = imgstr;
 
     sling.checkCollision();
     console.log();
@@ -275,10 +291,46 @@ socket.onmessage = function (event){
         console.log("closed");
 
     }
+    else if (finger === '1001'){
+        if (!isGameover){
+            console.log('Gameover');
+
+            gameOver.setGameOver();
+            gameOver.show();
+            isGameover = true;
+            runningGame = false;
+        }
+
+    }
+
+
+     else if (finger === '1110'){
+         runningGame = true;
+         isGameover = false;
+    }
 }
 
 change();
 
+
+// var video = document.getElementById('vid');
+// video.setAttribute('playsinline', '');
+// video.setAttribute('autoplay', '');
+// video.setAttribute('muted', '');
+//
+// /* Setting up the constraint */
+// var facingMode = "user"; // Can be 'user' or 'environment' to access back or front camera (NEAT!)
+// var constraints = {
+//   audio: false,
+//   video: {
+//    facingMode: facingMode
+//   }
+// };
+//
+// /* Stream it to video element */
+// navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+//   video.srcObject = stream;
+// });
 
 World.add(engine.world, [mouseConstraint, sling]);
 Engine.update(engine);

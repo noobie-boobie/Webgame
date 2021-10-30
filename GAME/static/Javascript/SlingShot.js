@@ -5,7 +5,7 @@ class SlingShot {
         this.width = 1;
         this.height = 90;
         this.slingX = this.x;
-        this.slingY = this.y - (this.height)/2 - 20;
+        this.slingY = this.y - (this.height)/2 - 10;
         this.body = Bodies.rectangle(this.x, this.y, this.width, this.height);
 
         this.allowShoot = false;
@@ -25,12 +25,17 @@ class SlingShot {
         this.sling = Matter.Constraint.create({
             pointA: { x: this.slingX, y: this.slingY },
             bodyB: this.Balls[this.currentBall].body,
-            stiffness: 0.02
+            stiffness: 0.02,
+            render:{
+                lineWidth: 12,
+                strokeStyle: '#331301',
+                type: 'line'
+            }
+
         });
-
-
          World.add(engine.world, [this.Balls[this.currentBall].body]);
     }
+
 
     toStatic(val){
         if (this.currentBall > -1)
@@ -77,13 +82,13 @@ class SlingShot {
         for(var i= 0; i <= this.currentBall; i++){
             if(Matter.SAT.collides(this.Balls[i].body, ground.body).collided){
                 this.Balls[i].body.render.sprite.texture = explodeImage;
-                this.Balls[i].body.render.sprite.yScale = 0.5;
-                this.Balls[i].body.render.sprite.xScale = 0.5;
+                this.Balls[i].body.render.sprite.yScale = 1;
+                this.Balls[i].body.render.sprite.xScale = 1;
                 let ball = this.Balls[i].body;
 
                 setTimeout(function (){
                     World.remove(engine.world, ball);
-                }, 20);
+                }, 100);
 
                 this.Balls.splice(i,i);
                 this.currentBall = this.Balls.length-1;
@@ -96,9 +101,10 @@ class SlingShot {
             for(var j=0; j< zombies.length; j++) {
                 if (Matter.SAT.collides(this.Balls[i].body, zombies[j].body).collided) {
 
+                    this.Balls[i].isStatic = true;
                     this.Balls[i].body.render.sprite.texture = explodeImage;
-                    this.Balls[i].body.render.sprite.yScale = 0.5;
-                    this.Balls[i].body.render.sprite.xScale = 0.5;
+                    this.Balls[i].body.render.sprite.yScale = 1;
+                    this.Balls[i].body.render.sprite.xScale = 1;
                     let ball = this.Balls[i];
 
                     if (ball.damageKardiya === false){
@@ -111,7 +117,7 @@ class SlingShot {
                     }
                     setTimeout(function (){
                         World.remove(engine.world, ball.body);
-                    }, 20);
+                    }, 100);
 
                     this.Balls.splice(i,i);
                     this.currentBall = this.Balls.length-1;
@@ -122,8 +128,8 @@ class SlingShot {
                 if (Matter.SAT.collides(this.Balls[i].body, wave2_mons[j].body).collided) {
 
                     this.Balls[i].body.render.sprite.texture = explodeImage;
-                    this.Balls[i].body.render.sprite.yScale = 0.5;
-                    this.Balls[i].body.render.sprite.xScale = 0.5;
+                    this.Balls[i].body.render.sprite.yScale = 1;
+                    this.Balls[i].body.render.sprite.xScale = 1;
                     let ball = this.Balls[i];
 
                     if (ball.damageKardiya === false){
@@ -154,7 +160,7 @@ class SlingShot {
         sprite.texture = slingImage;
         this.body.collisionFilter.mask = 0;
         sprite.xScale = 0.28;
-        sprite.yScale =0.28;
+        sprite.yScale =0.32;
         this.body.friction = 0.03;
 
     }

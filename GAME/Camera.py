@@ -1,6 +1,7 @@
 import cv2 as cv
 import time
 import mediapipe as mp
+import base64
 
 cap = None
 mp_hands = None
@@ -129,17 +130,22 @@ def getFrame():
 
             mp_draw.draw_landmarks(image, hand,mp_hands.HAND_CONNECTIONS)
 
-    cv.imshow('Hand', image)
+    #cv.imshow('Hand', image)
     if cv.waitKey(1) == 27:
         running = False
         stop()
+    smallImg = cv.resize(image, (200,150))
+    ret, imgenc = cv.imencode('.jpg', smallImg)
+    imgStr = base64.b64encode(imgenc)
 
-    return  (Finger, indexTip)
+
+    return  (Finger, indexTip, str(imgStr)[2:-1])
 
 def toStr(A):
     try:
         f = A[0]
         x,y = A[1]
+        I = A[2]
     except:
         return {}
 
@@ -152,7 +158,8 @@ def toStr(A):
     d = {
         'Finger': s,
         'X': x,
-        'Y': y
+        'Y': y,
+        'I':I
     }
     return d
 
